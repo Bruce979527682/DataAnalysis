@@ -1,5 +1,9 @@
+import pymongo
 import matplotlib.pyplot as plt
 import numpy as np
-x = np.linspace(0, 2 * np.pi, 50)
-plt.plot(x, np.sin(x))
-plt.show()
+from pandas.io.json import json_normalize
+client = pymongo.MongoClient('mongodb://localhost:27017/')
+dblist = client.list_database_names()
+db = client['admin']
+data = db['Scrapy'].find()
+rows = json_normalize(data)
