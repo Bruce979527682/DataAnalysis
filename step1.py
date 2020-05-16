@@ -7,3 +7,4 @@ dblist = client.list_database_names()
 db = client['admin']
 data = db['Scrapy'].find()
 rows = json_normalize(data)
+print('end')
